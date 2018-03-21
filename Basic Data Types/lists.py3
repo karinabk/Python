@@ -1,29 +1,23 @@
-Initialize your list and read in the value of 
-
-followed by 
-
-lines of commands where each command will be of the 
-
-types listed above. Iterate through each command in order and perform the corresponding operation on your list.
+#Initialize your list and read in the value of n
+#followed by n lines of commands where each command will be of the 
+# 7 types listed above. Iterate through each command in order and perform the corresponding operation on your list.
 
 if __name__ == '__main__':
     list_=[]
     N = int(input())
     for _ in range(N):
-        ins = list(str(input()))
-        print(ins[:3])
-        if ins[:3]==list("ins"):
-            print(int(ins[10]))
-            list_.insert(int(ins[7], int(ins[9]))
-        else if ins[:3]==list("pri"):
+        ins = list(input().split())
+        if ins[0] == "insert":
+            list_.insert(int(ins[1]), int(ins[2]))
+        if ins[0]== "print":
             print(list_)
-        else if ins[:3]==list("rem"):
-            list_.remove(int(ins[7]))
-        else if ins[:3]==list("app"):
-            list_.append(int(ins[7]))
-        else if ins[:3]==list("sor"):
+        if ins[0]== "remove":
+            list_.remove(int(ins[1]))
+        if ins[0]== "append":
+            list_.append(int(ins[1]))
+        if ins[0]== "sort":
             list_.sort()
-        else if ins[:3]==list("pop"):
+        if ins[0]== "pop":
             list_.pop()
-        else if ins[:3]==list("rev"):
+        if ins[0]== "reverse":
             list_.reverse()
