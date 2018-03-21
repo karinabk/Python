@@ -1,20 +1,6 @@
-Given an integer, 
-
-, and 
-
-space-separated integers as input, create a tuple, 
-
-, of those 
-
-integers. Then compute and print the result of 
-
-
-
-
-
-
-
-. 
+#Given an integer,n, and n
+#space-separated integers as input, create a tuple,t , of those 
+#n integers. Then compute and print the result of hash(t). 
 
 
 if __name__ == '__main__':
