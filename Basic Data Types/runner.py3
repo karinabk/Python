@@ -4,14 +4,13 @@
 
 if __name__ == '__main__':
     n = int(input())
+    maxV=-100
     arr = map(int, input().split())
-    secMax=0
-    maxV=0
+    arr = list(set(arr))
     for i in arr:
-        if maxV<arr:
-            maxV=arr
-            if secMax<arr and secMax!=max:
-                secMax=arr
-    print(secMax)
+        if maxV<i:
+            maxV=i
+    arr.remove(maxV)
+    print(max(arr))
 
-# it is working yet. just draft
+
