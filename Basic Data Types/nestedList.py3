@@ -12,18 +12,26 @@ if __name__ == '__main__':
         score = float(input())
         student.append([name,score])
     student = dict(student)
-    listValues= list(student.values())
+    listValues= list(student.values()) # creating list of points only
     minV = listValues[0]
-    secMin=0.0
-    for i in range(len(listValues)):
+    
+    for i in range(len(listValues)): # finding minimum
         if minV>listValues[i]:
-            if secMin!=minV: # in case if there are several minimum values
-                secMin=minV  # for saving second minimum value
             minV=listValues[i]
+    
+    listValues=set(listValues) # getting rid of duplicate numbers
+    listValues.remove(minV)  # get rif of min value
+    listValues=list(listValues)
+    
+    secMin=listValues[0]
+    for k in range(len(listValues)): # finding second minimum value
+        if secMin>listValues[k]:
+            secMin=listValues[k]
+    
     resultList=[]
     for k,v in student.items():
         if secMin== v:
-            resultList.append(k)
+            resultList.append(k) # creating list with names of students with these points
     resultList.sort()
     string = '\n'.join(resultList)
     print(string)
