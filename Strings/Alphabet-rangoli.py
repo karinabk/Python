@@ -1,4 +1,4 @@
-NOT WORKING YET#You are given an integer,N.
+oNOT WORKING YET#You are given an integer,N.
 #Your task is to print an alphabet rangoli of size N. 
 #(Rangoli is a form of Indian folk art based on creation of patterns.)
 #Different sizes of alphabet rangoli are shown below:
@@ -71,5 +71,45 @@ def print_rangoli(size):
 #         line +=2
 #         chardec+=1
     
- #  TRIED FOR PLENTY IF TIMES 
+ #  TRIED FOR PLENTY oF TIMES 
  #IS NOT WORKIN YET
+    def print_rangoli(size):
+    a='a'
+    charinc=0
+    chardec=0
+    string = ""
+    for line in range(size):
+        number1 =0
+        print("first loop")
+        string1=""
+        for i in range(size):
+            string1+=chr(ord(a)+size-1+chardec)
+            chardec-=1
+            if i==number1:
+                number1+=1
+                break
+            
+            if chr(ord(a)+size-1+chardec)=='a':
+                break
+        print(string1)    
+        print("end first")
+        print("second loop")
+        string2=""
+        number2=0
+        for k in range(size):
+            string2+=chr(ord(a)+size-2+charinc)
+            charinc+=1
+            if k==number2+1:
+                number2+=1
+                break
+                
+            
+            if chr(ord(a)+size-1-chardec)==chr(ord(a)+size-2+charinc):
+                break
+        print(string2)
+        print("end second")
+        print("RESULT")
+        print(string)
+        
+        
+       # TRIED TO IMPLEMENT IT IN ANOTHER WAY
