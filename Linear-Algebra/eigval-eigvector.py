@@ -25,3 +25,4 @@ C = B*A
 eig_rot1,eigenvector1=np.linalg.eig(C)
 eig_rot2,eigenvector2=np.linalg.eig(C)
 print(eigenvector1)
+#eigen vectors are wrong
