@@ -1,5 +1,6 @@
 # Implementation of Gauss_Jordan elimination on pure python 
 
+#now it works for n by n consistent square matrices
 
 matrix=[[0,2,1],
         [1,-2,-3],
@@ -14,6 +15,8 @@ matrix2 = [[ 1,  1, -2,  1, 3, -1],
            [ 4,  3,  1, -6, -3, -2]]
 vector = [4, 20, -15, -3 ,16, -27]
 
+
+#this function changes rows when first number in the first raw is zero
 def change_rows(matrix, vector): 
     for j in range(len(matrix)):
         if matrix[j][0] != 0 and matrix[j][0] != 0:
@@ -24,7 +27,9 @@ def change_rows(matrix, vector):
             matrix[0] = temp_lst
             vector[0] = temp_lst2
     return matrix, vector
-    
+   
+        
+# divides the raw by the first element to obtain one
 def make_one(list1,list_):
     i=0
     while list1[i]==0:
@@ -35,6 +40,8 @@ def make_one(list1,list_):
     list_[i]=list_[i]/temp
     return list1,list_
 
+
+# makes lower triangulat matrix
 def make_zero(matrix,list_,line):
     i=0    
     while matrix[line][i]==0:
@@ -48,6 +55,8 @@ def make_zero(matrix,list_,line):
     
     return matrix,list_
 
+
+#makes upper triangular matrix
 def make_zero2(matrix,list_,line,place):
     
     list2=[]
@@ -58,38 +67,23 @@ def make_zero2(matrix,list_,line,place):
         matrix[line][j]=matrix[line][j]+list2[j]
     return matrix,list_
     
+        
+#solution for the augmented matrix by Gauss-jordan elimintion
 def elimination(matrix,list_):
     if matrix[0][0] == 0:
         matrix, list_ = change_rows(matrix, list_)
     for i in range(len(matrix)):
-        for j in range(len(matrix)):
+        matrix[i], list_ = make_one(matrix[i], list_)
+        if i == len(matrix) - 1 : break
+        for j in range(i+1, len(matrix)):
+            if matrix[j][i] != 0:
+                matrix, list_ = make_zero(matrix, list_, j)
+    for k in range(len(matrix) - 2 , -1, -1):
+        for l in range(len(matrix) - 1, k, -1):
+            matrix, list_ = make_zero2(matrix, list_,k, l)       
             
-    if matrix[0][0]!=1:
-        matrix[0],list_=make_one(matrix[0],list_)
-    if matrix[1][0]!=0:
-        matrix,list_=make_zero(matrix,list_,1)
-    if matrix[2][0]!=0:
-        matrix,list_=make_zero(matrix,list_,2)
-    if matrix[1][1]!=1: 
-        matrix[1],list_=make_one(matrix[1],list_)
-    if matrix[2][1]!=0:
-        matrix,list_=make_zero(matrix,list_,2)
-    if matrix[2][2]!=1:
-        matrix[2],list_=make_one(matrix[2],list_)
-    if matrix[1][2]!=0:
-        matrix,list_=make_zero2(matrix,list_,1,2)
-    if matrix[0][2]!=0:
-        matrix,list_=make_zero2(matrix,list_,0,2)
-    if matrix[0][1]!=0:
-        matrix,list_=make_zero2(matrix,list_,0,1)
-    print(list_)
-    print(matrix)
-    
-        
-        
+    return matrix, list_
 
-# elimination(matrix,list_)
-print(elimination(matrix, list_))
-
-
-
+matrix, vector = elimination(matrix2, vector)
+vector = [round(x, 2) for x in vector]
+print(vector)
