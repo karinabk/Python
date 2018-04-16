@@ -1,3 +1,4 @@
+
 '''There is an array of n integers. There are also 2 disjoint sets, 
 A and B, each containing m integers. You like all the integers in set A
 and dislike all the integers in set B. Your initial happiness is 0. For each 
@@ -18,3 +19,8 @@ for i in arr:
     elif i in setB:
         happ-=1
 print(happ)
+
+
+
+#solution in one line 
+print(sum([(i in setA)-(i in setB) for i in arr]))
