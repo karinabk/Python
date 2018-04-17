@@ -15,16 +15,25 @@ desired by the customer and x, the price of the shoe.'''
 
 
 from collections import Counter
-N = int(input())
-S =list(map(int,input().split()))
-shoes =dict(Counter(S))
-Cus=int(input())
-price = []
-for _ in range(Cus):
-    price.append(list(map(int,input().split())))
-for i in price:
-    if price[i][0] in shoes.keys():
-        summ+=price[i][1]
+num_shoes = int(input())
+sizes = input().split()
+num_cust = int(input()) 
+purch_list = [input().split() for i in range(num_cust)]
+purch = [purch_list[i][0] for i in range(num_cust)]
+counter = dict(Counter(sizes))
+res = 0
+
+for j in range(num_cust):
+    if purch[j] in sizes and purch[j] in counter:
+        for k in purch_list:
+            if k[0] == purch[j]: 
+                res+=int(k[1])
+                purch_list.remove(k)
+                break
+        counter[purch[j]]-=1
+        if counter[purch[j]] == 0:
+            del counter[purch[j]]
+print(res)
         
         
-        # DOES NOT WORK YET
+        #IT WORKS NOW
